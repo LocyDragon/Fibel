@@ -1,0 +1,2 @@
+DownLoadThreads: 5 #下载数据的线程数量.
+SetUp: false

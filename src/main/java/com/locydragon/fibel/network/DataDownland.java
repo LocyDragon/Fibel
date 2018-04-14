@@ -13,16 +13,18 @@ import java.util.List;
 public class DataDownland {
 	public boolean downlandSuccess = true;
 	public boolean isOk = false;
-	private List<Thread> watchThreadList = new ArrayList<>();
-    public void downLoadData(int threadSize) {
-    	try {
+	public List<Thread> watchThreadList = new ArrayList<>();
+
+	public void downLoadData(int threadSize) {
+		try {
 			download(ObjectUtil.dataUrl, threadSize);
 		} catch (Exception exc) {
-    		downlandSuccess = false;
-    		isOk = false;
-    		exc.printStackTrace();
+			downlandSuccess = false;
+			isOk = false;
+			exc.printStackTrace();
 		}
 	}
+
 	private void download(String path, int threadSize) throws Exception {
 		URL url = new URL(path);
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
@@ -126,6 +128,6 @@ public class DataDownland {
 	 * @return
 	 */
 	private String getFileName(String path) {
-		return path.substring(path.lastIndexOf("/") + 1);
+		return ObjectUtil.downlandWhere;
 	}
 }
